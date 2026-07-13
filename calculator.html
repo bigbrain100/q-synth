@@ -550,7 +550,11 @@ const I18N = {
       ['Statements (M) — the size of your Q set','the number of statements participants sort. <b>Where it comes from:</b> this is your own design choice, drawn from your concourse; the calculator tells you whether that number is enough. Each statement is an observation that steadies every person-to-person correlation, so more statements help; 40+ is meaningfully better than 20.'],
       ['Viewpoints (K)','the number of shared viewpoints (factors) you expect. Currently fixed at 3, the only value in the simulated table.'],
       ['Target recovery — how sure you want to be','the probability you want that <i>all</i> the viewpoints are recovered. 0.90 (nine studies in ten) is a reasonable default.'],
-      ['Recovery rate (the result) — what "recovered" means','the percentage of simulated studies, at your settings, in which every planted viewpoint came back: each recovered factor array matched its planted one closely (Tucker congruence at or above the threshold, default 0.90). Read it as the probability that your factors are the study\'s real structure, not artifacts of too few sorts. The [95% CI] shows the simulation\'s own uncertainty.']
+      ['Recovery rate (the result) — what "recovered" means','the percentage of simulated studies, at your settings, in which every planted viewpoint came back: each recovered factor array matched its planted one closely (Tucker congruence at or above the threshold, default 0.90). Read it as the probability that your factors are the study\'s real structure, not artifacts of too few sorts. The [95% CI] shows the simulation\'s own uncertainty.'],
+      ['Congruence threshold (advanced)','how close a recovered factor array must be to the planted one to count as "recovered", measured by Tucker\'s coefficient of congruence. 0.90 is the usual choice; 0.95 is stricter and 0.85 more lenient. A higher threshold needs more sorts.'],
+      ['Distribution (advanced)','the shape sorts take. <b>Forced</b> is the standard Q quasi-normal grid where every sort has the same fixed shape (ipsative); <b>free</b> lets each item be rated independently. Forced is the norm, and in the simulation it does not hurt recovery.'],
+      ['Retention rule (advanced)','how the number of factors is decided. <b>Parallel analysis</b> keeps a factor only if it beats what random data would produce (recommended). <b>Oracle</b> assumes the true number is known and removes retention error; it is an idealized best case shown for reference.'],
+      ['Non-defining sorts (advanced)','the share of recruited participants who load clearly on no factor. <b>None</b> assumes everyone defines a factor; <b>20%</b> mimics a realistic study with some undecided participants. More non-definers slightly lowers recovery, so recruit a little extra.']
     ],
     eg_h:'Worked example',
     eg:'<b>Planning a study of three viewpoints on a contested education policy.</b> You expect participants to hold firm opinions (communality c ≈ 0.6) that partly overlap (ρ ≈ 0.3), and you plan 40 statements, aiming for 90% recovery. Press <b>Load example</b> then <b>Calculate</b>. The tool reads between the two nearest simulated conditions and suggests roughly <b>6 defining sorts per factor</b> if the viewpoints turn out distinct, up to <b>12</b> if they overlap. So plan for about <b>8–12 defining sorts per factor</b>, and recruit roughly <b>30–45 participants</b> for three factors, rather than the dozen a mechanical "4–5 per factor" rule would suggest.',
@@ -600,7 +604,11 @@ const I18N = {
       ['題數(M)──你 Q 樣本的大小','參與者要排的陳述句數。<b>它從哪來:</b>這是你自己的設計選擇,由你的 concourse 挑出;計算器會告訴你這個題數夠不夠。每個陳述句都是穩定「人與人相關」的觀察,題目越多越好;40 題以上明顯優於 20。'],
       ['觀點數(K)','你預期的共享觀點(因子)數。目前固定為 3,是模擬表中唯一的值。'],
       ['目標還原率──你想要多有把握','你希望「<i>所有</i>觀點都被還原」的機率。0.90(十次有九次)是合理的預設。'],
-      ['還原率(計算結果)──「被還原」是什麼意思','在你的設定下,模擬研究中「每一個植入觀點都回來」的百分比:每個還原因子陣列都與其植入陣列夠貼近(Tucker 契合度 ≥ 門檻,預設 0.90)。可讀成:你的因子是研究的真實結構、而非太少排序變出的假象的機率。〔95% CI〕顯示模擬本身的不確定度。']
+      ['還原率(計算結果)──「被還原」是什麼意思','在你的設定下,模擬研究中「每一個植入觀點都回來」的百分比:每個還原因子陣列都與其植入陣列夠貼近(Tucker 契合度 ≥ 門檻,預設 0.90)。可讀成:你的因子是研究的真實結構、而非太少排序變出的假象的機率。〔95% CI〕顯示模擬本身的不確定度。'],
+      ['契合門檻(進階)','一個還原因子陣列要與植入陣列多接近,才算「還原成功」,以 Tucker 契合係數衡量。0.90 是常用值;0.95 更嚴、0.85 較寬。調高會需要更多排序。'],
+      ['分佈(進階)','排序如何成形。<b>強制(forced)</b>是標準 Q 的準常態格子,每個排序都是同一固定形狀(ipsative);<b>自由(free)</b>讓每題各自評分。強制是常規,且在模擬中不傷害還原。'],
+      ['因子保留規則(進階)','模擬中「保留幾個因子」如何決定。<b>平行分析(parallel analysis)</b>只保留勝過隨機資料的因子(建議)。<b>oracle</b>假設已知真實因子數、移除保留誤差,是用來看最佳情況的理想化參照。'],
+      ['非定義排序(進階)','招募的參與者中,不明確在任何因子上顯著負荷的比例。<b>none</b>假設每個人都定義某因子;<b>20%</b>模擬「有些人未定」的真實研究。非定義者越多,還原略降,故招募時要多加一些。']
     ],
     eg_h:'範例',
     eg:'<b>規劃一個「三種觀點、對某爭議教育政策」的 Q 研究。</b>你預期參與者立場堅定(共同性 c ≈ 0.6)、觀點部分重疊(ρ ≈ 0.3),打算用 40 題,目標還原率 90%。按<b>「載入範例」</b>再按<b>「計算」</b>。工具在兩個最接近的模擬條件之間讀取,建議:若觀點分明約需<b>每因子 6 個定義排序</b>,若重疊則到<b>12 個</b>。所以請規劃約<b>每因子 8–12 個定義排序</b>、三因子約招募<b>30–45 位參與者</b>,而非「每因子 4–5 人」機械法則所暗示的十來人。',
