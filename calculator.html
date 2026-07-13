@@ -117,6 +117,10 @@
     <h3 data-i18n="eg_h">Worked example</h3>
     <div class="eg" id="egbox"></div>
   </div>
+  <div class="card">
+    <h3 data-i18n="philo_h">"But you don't know the factors yet — isn't this against Q's philosophy?"</h3>
+    <div id="philo"></div>
+  </div>
   <p class="muted" data-i18n="foot" style="margin-top:14px"></p>
 </div>
 
@@ -550,6 +554,14 @@ const I18N = {
     ],
     eg_h:'Worked example',
     eg:'<b>Planning a study of three viewpoints on a contested education policy.</b> You expect participants to hold firm opinions (communality c ≈ 0.6) that partly overlap (ρ ≈ 0.3), and you plan 40 statements, aiming for 90% recovery. Press <b>Load example</b> then <b>Calculate</b>. The tool reads between the two nearest simulated conditions and suggests roughly <b>6 defining sorts per factor</b> if the viewpoints turn out distinct, up to <b>12</b> if they overlap. So plan for about <b>8–12 defining sorts per factor</b>, and recruit roughly <b>30–45 participants</b> for three factors, rather than the dozen a mechanical "4–5 per factor" rule would suggest.',
+    philo_h:'"But you don\'t know the factors yet — isn\'t this against Q\'s philosophy?"',
+    philo:[
+      'A fair question, and the answer is no, for three reasons.',
+      '<b>1. Q already makes design assumptions before data.</b> Choosing how many participants and how many statements to use are decisions made before any sorting, and Brown\'s "4–5 defining sorts per factor" already assumes a rough factor count to plan around. This calculator only makes those existing assumptions explicit and quantitative.',
+      '<b>2. The inputs are a what-if, not a prediction.</b> "If the study has about three viewpoints of moderate strength, then I need about eight sorts per factor." You are insuring a plausible structure, not fixing the outcome. Try several scenarios (a few values of K, c, ρ) to bracket your design; that is sensitivity analysis, not hypothesis testing.',
+      '<b>3. It never touches the analysis or interpretation.</b> Q\'s operant principle governs how factors are extracted and read from the data, holistically and by abduction. This tool says nothing about that. It informs only how many people to recruit and how many statements to write, which you must decide before data anyway. Whatever viewpoints actually emerge, you extract and interpret them as before: plan for three, and if four emerge, you interpret four.',
+      '<b>No prior study?</b> With no pilot and no near-topic study, plan for a small, plausible number of viewpoints (2–4 are common in Q) and use conservative values (lower c, higher ρ). That gives a design robust across plausible structures; recruiting a little extra is cheap insurance against the uncertainty. Not choosing N and M is not an option; choosing them by reasoning about adequacy is more defensible, and no less operant, than choosing them by rule of thumb.'
+    ],
     foot:'This reads a coarse simulated recovery table (c ∈ {0.4, 0.6, 0.8}, ρ ∈ {0, 0.4}, M ∈ {20, 40}, sorts/factor ∈ {4, 6, 8, 12}) and snaps inputs to the nearest condition, leaning safe. It is planning guidance to read with your topic in mind, not a fixed rule. Source: the Q-SYNTH repository.'
   },
   zh: {
@@ -592,6 +604,14 @@ const I18N = {
     ],
     eg_h:'範例',
     eg:'<b>規劃一個「三種觀點、對某爭議教育政策」的 Q 研究。</b>你預期參與者立場堅定(共同性 c ≈ 0.6)、觀點部分重疊(ρ ≈ 0.3),打算用 40 題,目標還原率 90%。按<b>「載入範例」</b>再按<b>「計算」</b>。工具在兩個最接近的模擬條件之間讀取,建議:若觀點分明約需<b>每因子 6 個定義排序</b>,若重疊則到<b>12 個</b>。所以請規劃約<b>每因子 8–12 個定義排序</b>、三因子約招募<b>30–45 位參與者</b>,而非「每因子 4–5 人」機械法則所暗示的十來人。',
+    philo_h:'「都還沒做,怎麼知道有幾個因子?這不是違反 Q 的哲學嗎?」',
+    philo:[
+      '好問題,答案是「不違反」,有三個理由。',
+      '<b>1. Q 本來就在收資料前做設計假設。</b>「要幾位參與者、要幾題」本來就是排序前的決定,而 Brown「每因子 4–5 人」本身就假設了一個因子數來規劃。這個計算器只是把這些既有的假設變得明確、量化。',
+      '<b>2. 輸入是「假使…則…」,不是預測。</b>「假使有約三個中等強度的觀點,則我需要每因子約八人。」你是在為一個合理的結構買保險,不是指定結果。可跑幾組情境(不同 K、c、ρ)把設計框起來——這是敏感度分析,不是假設檢定。',
+      '<b>3. 它完全不碰分析與詮釋。</b>Q 的 operant 原則管的是「因子如何從資料中萃取、如何整體地以 abduction 詮釋」;這個工具對此隻字不提。它只影響「招幾人、寫幾題」——這本來就得在收資料前決定。真正湧現幾個觀點,你照舊萃取與詮釋:規劃三個,結果湧現四個,你就詮釋四個。',
+      '<b>沒有前導或近題研究?</b>那就假設一個小而合理的觀點數(Q 常見 2–4)+ 保守值(c 偏低、ρ 偏高),得到一個對多種可能結構都穩健的設計;多招一點就是對不確定性的便宜保險。不決定 N 和 M 不是選項;用「充分性推理」來決定,比用經驗法則盲猜更站得住腳,也絲毫不減 operant 精神。'
+    ],
     foot:'本工具讀一張粗格點的模擬還原表(c ∈ {0.4, 0.6, 0.8}、ρ ∈ {0, 0.4}、M ∈ {20, 40}、每因子排序 ∈ {4, 6, 8, 12}),把輸入 snap 到最近的條件、偏保守。這是「帶著你的主題來讀」的規劃指引,不是死板法則。來源:Q-SYNTH repository。'
   }
 };
@@ -607,6 +627,7 @@ function setLang(l){
   document.getElementById('howto').innerHTML = T().howto.map(s=>`<li>${s}</li>`).join('');
   document.getElementById('params').innerHTML = T().params.map(p=>`<dt>${p[0]}</dt><dd>${p[1]}</dd>`).join('');
   document.getElementById('egbox').innerHTML = T().eg;
+  document.getElementById('philo').innerHTML = T().philo.map(s=>`<p>${s}</p>`).join('');
   calc();
 }
 
