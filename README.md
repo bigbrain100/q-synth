@@ -23,7 +23,9 @@ The simulation, the calculator, and the tests run with Node alone: **no dependen
 
 ### Design calculator (plan a study)
 
-Given the kind of viewpoints you expect, get the sample size and item count needed for the factors to be recovered:
+**In a browser (no install):** open `calculator.html` in any web browser. It provides a G*Power-style form (expected communality, viewpoint overlap, statements, target recovery) and returns the recommended defining sorts per factor and participant count, with a recovery-rate curve. The page is self-contained (the lookup table is embedded), so it works by double-clicking the file, and it can be deployed (e.g. GitHub Pages) as a live tool.
+
+**On the command line:** given the kind of viewpoints you expect, get the sample size and item count needed for the factors to be recovered:
 
 ```bash
 node calculate.mjs --c 0.6 --rho 0.2 --M 40 --K 3 --target 0.90
