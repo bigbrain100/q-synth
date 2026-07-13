@@ -1,0 +1,35 @@
+{
+  "name": "q-synth",
+  "version": "1.0.0",
+  "description": "A synthetic Q-sort recovery simulator for evidence-based sample-size (N persons) and item-count (M statements) guidance in Q methodology.",
+  "type": "module",
+  "main": "qsynth.mjs",
+  "scripts": {
+    "test": "node --test",
+    "calc": "node calculate.mjs",
+    "sweep": "node run.mjs 500",
+    "robustness": "node robustness.mjs 400",
+    "calibrate": "node seeding/seed-calibrate.mjs"
+  },
+  "keywords": [
+    "Q methodology",
+    "factor analysis",
+    "Monte Carlo simulation",
+    "sample size",
+    "research design",
+    "recovery simulation"
+  ],
+  "author": "Ming-Shinn Lee, Wan-Hsiang Wang, Yi-Jung Tsai",
+  "license": "MIT",
+  "homepage": "https://github.com/bigbrain100/q-synth#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bigbrain100/q-synth.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bigbrain100/q-synth/issues"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

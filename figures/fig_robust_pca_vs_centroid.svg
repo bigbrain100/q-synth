@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="400" font-family="sans-serif" font-size="12">
+<rect width="560" height="400" fill="white"/>
+<text x="280" y="24" text-anchor="middle" font-size="15" font-weight="bold">PCA vs centroid 還原率(M=40,ρ=0.4,強制,oracle)</text>
+<line x1="62" y1="346" x2="410" y2="346" stroke="#eee"/>
+<text x="54" y="350" text-anchor="end" fill="#555">0%</text>
+<line x1="62" y1="286" x2="410" y2="286" stroke="#eee"/>
+<text x="54" y="290" text-anchor="end" fill="#555">20%</text>
+<line x1="62" y1="226" x2="410" y2="226" stroke="#eee"/>
+<text x="54" y="230" text-anchor="end" fill="#555">40%</text>
+<line x1="62" y1="166" x2="410" y2="166" stroke="#eee"/>
+<text x="54" y="170" text-anchor="end" fill="#555">60%</text>
+<line x1="62" y1="105.99999999999999" x2="410" y2="105.99999999999999" stroke="#eee"/>
+<text x="54" y="109.99999999999999" text-anchor="end" fill="#555">80%</text>
+<line x1="62" y1="46" x2="410" y2="46" stroke="#eee"/>
+<text x="54" y="50" text-anchor="end" fill="#555">100%</text>
+<line x1="62" y1="46" x2="62" y2="346" stroke="#333"/>
+<line x1="62" y1="346" x2="410" y2="346" stroke="#333"/>
+<text x="62" y="366" text-anchor="middle" fill="#555">4</text>
+<text x="178" y="366" text-anchor="middle" fill="#555">6</text>
+<text x="294" y="366" text-anchor="middle" fill="#555">8</text>
+<text x="410" y="366" text-anchor="middle" fill="#555">12</text>
+<text x="236" y="392" text-anchor="middle" fill="#333">每因素人數(persons/factor)</text>
+<text x="16" y="196" text-anchor="middle" transform="rotate(-90 16 196)" fill="#333">還原率 @|φ|≥0.90</text>
+<polyline points="62,346 178,341.5 294,280 410,78.25000000000001" fill="none" stroke="#28c" stroke-width="2.2" stroke-dasharray="" opacity="0.4"/>
+<circle cx="62" cy="346" r="3" fill="#28c" opacity="0.4"/>
+<circle cx="178" cy="341.5" r="3" fill="#28c" opacity="0.4"/>
+<circle cx="294" cy="280" r="3" fill="#28c" opacity="0.4"/>
+<circle cx="410" cy="78.25000000000001" r="3" fill="#28c" opacity="0.4"/>
+<line x1="422" y1="52" x2="440" y2="52" stroke="#28c" stroke-width="2.2" stroke-dasharray="" opacity="0.4"/>
+<text x="444" y="56" fill="#333">c=0.4 pca</text>
+<polyline points="62,346 178,343.75 294,288.25 410,90.24999999999999" fill="none" stroke="#e63" stroke-width="2.2" stroke-dasharray="6 4" opacity="0.4"/>
+<circle cx="62" cy="346" r="3" fill="#e63" opacity="0.4"/>
+<circle cx="178" cy="343.75" r="3" fill="#e63" opacity="0.4"/>
+<circle cx="294" cy="288.25" r="3" fill="#e63" opacity="0.4"/>
+<circle cx="410" cy="90.24999999999999" r="3" fill="#e63" opacity="0.4"/>
+<line x1="422" y1="70" x2="440" y2="70" stroke="#e63" stroke-width="2.2" stroke-dasharray="6 4" opacity="0.4"/>
+<text x="444" y="74" fill="#333">c=0.4 centroid</text>
+<polyline points="62,186.25 178,50.5 294,46 410,46" fill="none" stroke="#28c" stroke-width="2.2" stroke-dasharray="" opacity="0.7"/>
+<circle cx="62" cy="186.25" r="3" fill="#28c" opacity="0.7"/>
+<circle cx="178" cy="50.5" r="3" fill="#28c" opacity="0.7"/>
+<circle cx="294" cy="46" r="3" fill="#28c" opacity="0.7"/>
+<circle cx="410" cy="46" r="3" fill="#28c" opacity="0.7"/>
+<line x1="422" y1="88" x2="440" y2="88" stroke="#28c" stroke-width="2.2" stroke-dasharray="" opacity="0.7"/>
+<text x="444" y="92" fill="#333">c=0.6 pca</text>
+<polyline points="62,235.75000000000003 178,83.5 294,61.000000000000014 410,49.749999999999986" fill="none" stroke="#e63" stroke-width="2.2" stroke-dasharray="6 4" opacity="0.7"/>
+<circle cx="62" cy="235.75000000000003" r="3" fill="#e63" opacity="0.7"/>
+<circle cx="178" cy="83.5" r="3" fill="#e63" opacity="0.7"/>
+<circle cx="294" cy="61.000000000000014" r="3" fill="#e63" opacity="0.7"/>
+<circle cx="410" cy="49.749999999999986" r="3" fill="#e63" opacity="0.7"/>
+<line x1="422" y1="106" x2="440" y2="106" stroke="#e63" stroke-width="2.2" stroke-dasharray="6 4" opacity="0.7"/>
+<text x="444" y="110" fill="#333">c=0.6 centroid</text>
+<polyline points="62,46 178,46 294,46 410,46" fill="none" stroke="#28c" stroke-width="2.2" stroke-dasharray="" opacity="1"/>
+<circle cx="62" cy="46" r="3" fill="#28c" opacity="1"/>
+<circle cx="178" cy="46" r="3" fill="#28c" opacity="1"/>
+<circle cx="294" cy="46" r="3" fill="#28c" opacity="1"/>
+<circle cx="410" cy="46" r="3" fill="#28c" opacity="1"/>
+<line x1="422" y1="124" x2="440" y2="124" stroke="#28c" stroke-width="2.2" stroke-dasharray="" opacity="1"/>
+<text x="444" y="128" fill="#333">c=0.8 pca</text>
+<polyline points="62,125.5 178,86.5 294,71.49999999999999 410,56.50000000000001" fill="none" stroke="#e63" stroke-width="2.2" stroke-dasharray="6 4" opacity="1"/>
+<circle cx="62" cy="125.5" r="3" fill="#e63" opacity="1"/>
+<circle cx="178" cy="86.5" r="3" fill="#e63" opacity="1"/>
+<circle cx="294" cy="71.49999999999999" r="3" fill="#e63" opacity="1"/>
+<circle cx="410" cy="56.50000000000001" r="3" fill="#e63" opacity="1"/>
+<line x1="422" y1="142" x2="440" y2="142" stroke="#e63" stroke-width="2.2" stroke-dasharray="6 4" opacity="1"/>
+<text x="444" y="146" fill="#333">c=0.8 centroid</text>
+</svg>

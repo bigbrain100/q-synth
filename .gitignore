@@ -1,0 +1,7 @@
+node_modules/
+# Human-subjects Q data — never commit
+KADE_*.xlsx
+*.xlsx
+# OS / logs
+.DS_Store
+npm-debug.log*
