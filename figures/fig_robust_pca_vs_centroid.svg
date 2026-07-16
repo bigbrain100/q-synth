@@ -21,32 +21,32 @@
 <text x="410" y="366" text-anchor="middle" fill="#555">12</text>
 <text x="236" y="392" text-anchor="middle" fill="#333">每因素人數(persons/factor)</text>
 <text x="16" y="196" text-anchor="middle" transform="rotate(-90 16 196)" fill="#333">還原率 @|φ|≥0.90</text>
-<polyline points="62,346 178,341.5 294,280 410,78.25000000000001" fill="none" stroke="#28c" stroke-width="2.2" stroke-dasharray="" opacity="0.4"/>
+<polyline points="62,346 178,340.3 294,279.1 410,83.2" fill="none" stroke="#28c" stroke-width="2.2" stroke-dasharray="" opacity="0.4"/>
 <circle cx="62" cy="346" r="3" fill="#28c" opacity="0.4"/>
-<circle cx="178" cy="341.5" r="3" fill="#28c" opacity="0.4"/>
-<circle cx="294" cy="280" r="3" fill="#28c" opacity="0.4"/>
-<circle cx="410" cy="78.25000000000001" r="3" fill="#28c" opacity="0.4"/>
+<circle cx="178" cy="340.3" r="3" fill="#28c" opacity="0.4"/>
+<circle cx="294" cy="279.1" r="3" fill="#28c" opacity="0.4"/>
+<circle cx="410" cy="83.2" r="3" fill="#28c" opacity="0.4"/>
 <line x1="422" y1="52" x2="440" y2="52" stroke="#28c" stroke-width="2.2" stroke-dasharray="" opacity="0.4"/>
 <text x="444" y="56" fill="#333">c=0.4 pca</text>
-<polyline points="62,346 178,343.75 294,288.25 410,90.24999999999999" fill="none" stroke="#e63" stroke-width="2.2" stroke-dasharray="6 4" opacity="0.4"/>
+<polyline points="62,346 178,343 294,284.8 410,94.60000000000001" fill="none" stroke="#e63" stroke-width="2.2" stroke-dasharray="6 4" opacity="0.4"/>
 <circle cx="62" cy="346" r="3" fill="#e63" opacity="0.4"/>
-<circle cx="178" cy="343.75" r="3" fill="#e63" opacity="0.4"/>
-<circle cx="294" cy="288.25" r="3" fill="#e63" opacity="0.4"/>
-<circle cx="410" cy="90.24999999999999" r="3" fill="#e63" opacity="0.4"/>
+<circle cx="178" cy="343" r="3" fill="#e63" opacity="0.4"/>
+<circle cx="294" cy="284.8" r="3" fill="#e63" opacity="0.4"/>
+<circle cx="410" cy="94.60000000000001" r="3" fill="#e63" opacity="0.4"/>
 <line x1="422" y1="70" x2="440" y2="70" stroke="#e63" stroke-width="2.2" stroke-dasharray="6 4" opacity="0.4"/>
 <text x="444" y="74" fill="#333">c=0.4 centroid</text>
-<polyline points="62,186.25 178,50.5 294,46 410,46" fill="none" stroke="#28c" stroke-width="2.2" stroke-dasharray="" opacity="0.7"/>
-<circle cx="62" cy="186.25" r="3" fill="#28c" opacity="0.7"/>
-<circle cx="178" cy="50.5" r="3" fill="#28c" opacity="0.7"/>
-<circle cx="294" cy="46" r="3" fill="#28c" opacity="0.7"/>
+<polyline points="62,185.79999999999998 178,51.400000000000006 294,46.3 410,46" fill="none" stroke="#28c" stroke-width="2.2" stroke-dasharray="" opacity="0.7"/>
+<circle cx="62" cy="185.79999999999998" r="3" fill="#28c" opacity="0.7"/>
+<circle cx="178" cy="51.400000000000006" r="3" fill="#28c" opacity="0.7"/>
+<circle cx="294" cy="46.3" r="3" fill="#28c" opacity="0.7"/>
 <circle cx="410" cy="46" r="3" fill="#28c" opacity="0.7"/>
 <line x1="422" y1="88" x2="440" y2="88" stroke="#28c" stroke-width="2.2" stroke-dasharray="" opacity="0.7"/>
 <text x="444" y="92" fill="#333">c=0.6 pca</text>
-<polyline points="62,235.75000000000003 178,83.5 294,61.000000000000014 410,49.749999999999986" fill="none" stroke="#e63" stroke-width="2.2" stroke-dasharray="6 4" opacity="0.7"/>
-<circle cx="62" cy="235.75000000000003" r="3" fill="#e63" opacity="0.7"/>
-<circle cx="178" cy="83.5" r="3" fill="#e63" opacity="0.7"/>
+<polyline points="62,237.70000000000002 178,86.5 294,61.000000000000014 410,52.900000000000006" fill="none" stroke="#e63" stroke-width="2.2" stroke-dasharray="6 4" opacity="0.7"/>
+<circle cx="62" cy="237.70000000000002" r="3" fill="#e63" opacity="0.7"/>
+<circle cx="178" cy="86.5" r="3" fill="#e63" opacity="0.7"/>
 <circle cx="294" cy="61.000000000000014" r="3" fill="#e63" opacity="0.7"/>
-<circle cx="410" cy="49.749999999999986" r="3" fill="#e63" opacity="0.7"/>
+<circle cx="410" cy="52.900000000000006" r="3" fill="#e63" opacity="0.7"/>
 <line x1="422" y1="106" x2="440" y2="106" stroke="#e63" stroke-width="2.2" stroke-dasharray="6 4" opacity="0.7"/>
 <text x="444" y="110" fill="#333">c=0.6 centroid</text>
 <polyline points="62,46 178,46 294,46 410,46" fill="none" stroke="#28c" stroke-width="2.2" stroke-dasharray="" opacity="1"/>
@@ -56,11 +56,11 @@
 <circle cx="410" cy="46" r="3" fill="#28c" opacity="1"/>
 <line x1="422" y1="124" x2="440" y2="124" stroke="#28c" stroke-width="2.2" stroke-dasharray="" opacity="1"/>
 <text x="444" y="128" fill="#333">c=0.8 pca</text>
-<polyline points="62,125.5 178,86.5 294,71.49999999999999 410,56.50000000000001" fill="none" stroke="#e63" stroke-width="2.2" stroke-dasharray="6 4" opacity="1"/>
-<circle cx="62" cy="125.5" r="3" fill="#e63" opacity="1"/>
+<polyline points="62,118.3 178,86.5 294,65.49999999999999 410,54.10000000000001" fill="none" stroke="#e63" stroke-width="2.2" stroke-dasharray="6 4" opacity="1"/>
+<circle cx="62" cy="118.3" r="3" fill="#e63" opacity="1"/>
 <circle cx="178" cy="86.5" r="3" fill="#e63" opacity="1"/>
-<circle cx="294" cy="71.49999999999999" r="3" fill="#e63" opacity="1"/>
-<circle cx="410" cy="56.50000000000001" r="3" fill="#e63" opacity="1"/>
+<circle cx="294" cy="65.49999999999999" r="3" fill="#e63" opacity="1"/>
+<circle cx="410" cy="54.10000000000001" r="3" fill="#e63" opacity="1"/>
 <line x1="422" y1="142" x2="440" y2="142" stroke="#e63" stroke-width="2.2" stroke-dasharray="6 4" opacity="1"/>
 <text x="444" y="146" fill="#333">c=0.8 centroid</text>
 </svg>

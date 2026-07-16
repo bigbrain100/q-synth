@@ -9,8 +9,9 @@ rather than the **PCA** that q-synth (and this study's sweep) run on.
 - **Paired design:** each replicate draws one synthetic dataset and scores *both*
   methods on it, so any difference is the extraction method alone.
 - Retention fixed to **oracle** (nf = K planted factors) to isolate extraction
-  from factor-retention rules. mode = forced, no non-loaders, K = 3, R = 400.
-- Reproduce: `node robustness.mjs 400` → `robustness.csv`,
+  from factor-retention rules. mode = forced, no non-loaders, K = 3, R = 1000.
+- Parallel (worker_threads) with per-cell deterministic seeding, like `run.mjs`.
+- Reproduce: `node robustness.mjs 1000` → `robustness.csv`,
   `figures/fig_robust_pca_vs_centroid.svg`.
 
 ## Finding: the standard is robust; centroid is modestly more conservative
@@ -20,15 +21,15 @@ Recovery @ |φ| ≥ 0.90, shown **PCA% / centroid%** (M = 40, forced, oracle):
 | c \ persons-per-factor | 4 | 6 | 8 | 12 |
 |---|---|---|---|---|
 | **ρ = 0.0** |||||
-| 0.4 | 0 / 0 | 2 / 1 | 24 / 19 | 91 / 90 |
-| 0.6 | 54 / 35 | 99 / 91 | 100 / 95 | 100 / 99 |
-| 0.8 | 100 / 82 | 100 / 91 | 100 / 96 | 100 / 99 |
+| 0.4 | 0 / 0 | 2 / 1 | 21 / 19 | 90 / 89 |
+| 0.6 | 52 / 34 | 98 / 90 | 100 / 97 | 100 / 99 |
+| 0.8 | 100 / 81 | 100 / 92 | 100 / 96 | 100 / 100 |
 | **ρ = 0.4** |||||
-| 0.4 | 0 / 0 | 1 / 1 | 22 / 19 | 89 / 85 |
-| 0.6 | 53 / 37 | 99 / 88 | 100 / 95 | 100 / 99 |
-| 0.8 | 100 / 74 | 100 / 87 | 100 / 92 | 100 / 97 |
+| 0.4 | 0 / 0 | 2 / 1 | 22 / 20 | 88 / 84 |
+| 0.6 | 53 / 36 | 98 / 87 | 100 / 95 | 100 / 98 |
+| 0.8 | 100 / 76 | 100 / 87 | 100 / 94 | 100 / 97 |
 
-(M = 20 in `robustness.csv`; same qualitative pattern.)
+(ρ = 0.2 and M = 20 also in `robustness.csv`; same qualitative pattern.)
 
 1. **Qualitative thresholds are method-invariant.** Under both PCA and centroid:
    c = 0.4 fails regardless of N; c ≥ 0.6 is required; recovery saturates by
@@ -40,7 +41,7 @@ Recovery @ |φ| ≥ 0.90, shown **PCA% / centroid%** (M = 40, forced, oracle):
    gap closes to a few points once N is comfortable (≥8/factor).
 3. **Direction is reviewer-friendly:** centroid is never *more* permissive than
    PCA, so a PCA-derived standard is a safe **lower bound** — a centroid user
-   following it will not be under-powered. Largest gap: centroid −26 pp at the
+   following it will not be under-powered. Largest gap: centroid −24 pp at the
    single hardest cell (c = 0.8, 4/factor, ρ = 0.4), where 4/factor is already
    below the recommended minimum.
 

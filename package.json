@@ -7,8 +7,8 @@
   "scripts": {
     "test": "node --test",
     "calc": "node calculate.mjs",
-    "sweep": "node run.mjs 500",
-    "robustness": "node robustness.mjs 400",
+    "sweep": "node run.mjs 1000",
+    "robustness": "node robustness.mjs 1000",
     "calibrate": "node seeding/seed-calibrate.mjs"
   },
   "keywords": [

@@ -38,8 +38,8 @@ The calculator reads a **coarse simulated lookup table** (c ∈ {0.4, 0.6, 0.8},
 ### Run the simulation sweep
 
 ```bash
-node run.mjs 500              # 500 replications per cell -> results.csv + figures/
-node robustness.mjs 400       # PCA vs centroid, paired -> robustness.csv
+node run.mjs 1000             # parallel (worker_threads), 1000 reps/cell -> results.csv + figures/
+node robustness.mjs 1000      # PCA vs centroid, paired -> robustness.csv
 node seeding/seed-calibrate.mjs   # ecological calibration on the public Lipset data
 ```
 

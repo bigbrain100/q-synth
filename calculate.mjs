@@ -22,15 +22,16 @@
 //   --retention  pa (parallel analysis) | oracle, default pa
 //   --nonloaders 0 | 0.2 expected share of non-defining participants, default 0
 //
-// The simulated grid is coarse (c in {0.4,0.6,0.8}; rho in {0,0.4}; M in {20,40};
-// persons/factor in {4,6,8,12}; K=3). Inputs are snapped to the nearest grid
-// value, leaning to the SAFER side (lower c, higher rho) so a recommendation is
-// never optimistic. This is planning guidance to read with your topic in mind,
-// not a recipe.
+// The simulated grid is coarse (c in {0.4,0.6,0.8}; rho in {0,0.2,0.4}; M in {20,30,40,60,80};
+// persons/factor in {4,6,8,12}; K in {2,3,4,5,6,7}, seven being the magic-number-seven
+// ceiling of factors Brown would preliminarily extract). Inputs are snapped to the
+// nearest grid value, leaning to the SAFER side (lower c, higher rho) so a
+// recommendation is never optimistic. This is planning guidance to read with your
+// topic in mind, not a recipe.
 
 import { readFileSync } from 'node:fs';
 
-const GRID = { c: [0.4, 0.6, 0.8], rho: [0.0, 0.4], M: [20, 40], perFactorN: [4, 6, 8, 12] };
+const GRID = { c: [0.4, 0.6, 0.8], rho: [0.0, 0.2, 0.4], M: [20, 30, 40, 60, 80], perFactorN: [4, 6, 8, 12], K: [2, 3, 4, 5, 6, 7] };
 
 function parseArgs(argv) {
   const o = {};
@@ -67,7 +68,7 @@ function main() {
   const cIn = a.c !== undefined ? +a.c : 0.6;
   const rhoIn = a.rho !== undefined ? +a.rho : 0.2;
   const MIn = a.M !== undefined ? +a.M : 40;
-  const K = a.K !== undefined ? +a.K : 3;
+  const Kin = a.K !== undefined ? +a.K : 3;
   const target = a.target !== undefined ? +a.target : 0.90;
   const thr = a.threshold !== undefined ? a.threshold : '0.90';
   const mode = a.mode || 'forced';
@@ -86,11 +87,9 @@ function main() {
   if (!['pa', 'oracle'].includes(retention)) errs.push(`--retention must be pa or oracle (got ${retention})`);
   if (!['0', '0.2'].includes(String(nlf))) errs.push(`--nonloaders must be 0 or 0.2 (got ${nlf})`);
   if (errs.length) { console.error('Invalid input:\n  ' + errs.join('\n  ')); process.exit(1); }
-  if (K !== 3) {
-    console.error(`Only K=3 viewpoints is currently simulated, so --K ${K} is not supported.`);
-    console.error('Extend the lookup table by re-running the sweep for other K to use this calculator with a different number of factors.');
-    process.exit(1);
-  }
+  if (!Number.isFinite(Kin) || Kin < 1) { console.error(`Invalid input:\n  --K must be a positive integer (got ${a.K})`); process.exit(1); }
+  const K = snap(Math.round(Kin), GRID.K, 'high'); // expected viewpoint count, snapped to the simulated grid (2..7)
+  const kCeiling = Math.round(Kin) > 7;            // beyond the magic-number-seven ceiling
 
   const M = snap(MIn, GRID.M, 'low');       // safer = fewer statements
   const cCons = snap(cIn, GRID.c, 'low');    // conservative = lower communality
@@ -115,9 +114,11 @@ function main() {
 
   console.log('Q-SYNTH design calculator');
   console.log('-------------------------');
-  console.log(`Inputs: c=${cIn}, rho=${rhoIn}, M=${MIn} statements, K=${K}, ${mode}, ${retention} retention, target recovery ${Math.round(target * 100)}% at |phi|>=${thr}.`);
-  console.log(`Simulated grid: c in {0.4,0.6,0.8}, rho in {0,0.4}, M in {20,40}, persons/factor in {4,6,8,12}.`);
+  console.log(`Inputs: c=${cIn}, rho=${rhoIn}, M=${MIn} statements, K=${Kin} viewpoints, ${mode}, ${retention} retention, target recovery ${Math.round(target * 100)}% at |phi|>=${thr}.`);
+  console.log(`Simulated grid: c in {0.4,0.6,0.8}, rho in {0,0.2,0.4}, M in {20,30,40,60,80}, persons/factor in {4,6,8,12}, K in {2,3,4,5,6,7}.`);
   if (M !== MIn) console.log(`(M snapped to ${M}.)`);
+  if (kCeiling) console.log(`(K above the simulated ceiling; read at K=7, the magic-number-seven limit. Recovering more than seven distinct viewpoints is beyond what the table covers and is generally impractical.)`);
+  else if (K !== Math.round(Kin)) console.log(`(K snapped to ${K}.)`);
 
   const printRec = (label, c, rho, r) => {
     if (!r) { console.log(`${label} (c=${c}, rho=${rho}): no matching condition.`); return; }

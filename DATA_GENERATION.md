@@ -41,9 +41,14 @@ Notation: K planted viewpoints, M statements, c communality of a defining sort,
 rho distinctness (correlation among viewpoints), and a forced grid whose column
 counts sum to M.
 
-**1. Seeded randomness (`makeRng(seed)`).** A mulberry32-style PRNG. `.u()`
-returns a uniform in [0,1); `.n()` returns a standard normal via Box-Muller. The
-seed fixes the entire sequence, hence the whole dataset.
+**1. Seeded randomness (`makeRng(seed)`), seeded per cell.** A mulberry32-style
+PRNG. `.u()` returns a uniform in [0,1); `.n()` returns a standard normal via
+Box-Muller. Each design cell seeds its own generator deterministically from its
+parameters, and each parallel-analysis threshold seeds from its (N, M, rendering),
+via a fixed base (20260711 for the main sweep, 20260712 for robustness) hashed
+with the cell coordinates. A cell's result is therefore independent of how many
+workers run or in what order cells are processed, so the parallel sweep is
+bit-identical to a serial one and fully reproducible.
 
 **2. Planted viewpoints (`makeIdeals`).** Draw a K by M matrix Z of independent
 standard normals. Build the lower-triangular Cholesky factor L of the K by K
@@ -74,7 +79,7 @@ M statements). This matrix is the "raw data" of one replicate; it is analysed
 exactly as a real Q study would be (correlation, extraction, rotation, factor
 arrays).
 
-**6. Monte Carlo.** Steps 2 to 5 are repeated R times (R = 500 in the submission
+**6. Monte Carlo.** Steps 2 to 5 are repeated R times (R = 1000 in the submission
 sweep) for each design cell, the RNG advancing each time, and the recovery rate
 is the fraction of replicates in which every planted viewpoint is matched by a
 distinct recovered factor at Tucker congruence at or above the threshold.
@@ -95,13 +100,14 @@ From `q-synth/` on Node.js v24 (self-contained; the only external library is
 
 | Result | Command | Output |
 |---|---|---|
-| Main PCA sweep + figures | `node run.mjs 500` | `results.csv`, `figures/*.svg` |
-| PCA vs centroid robustness | `node robustness.mjs 400` | `robustness.csv`, `figures/fig_robust_pca_vs_centroid.svg` |
+| Main PCA sweep + figures | `node run.mjs 1000` (parallel, worker_threads) | `results.csv`, `figures/*.svg` |
+| PCA vs centroid robustness | `node robustness.mjs 1000` | `robustness.csv`, `figures/fig_robust_pca_vs_centroid.svg` |
 | Real-KADE cross-check | `node validation/kade-crosscheck.mjs <KADE_results.xlsx>` (run from repo root) | console report |
 | Lipset ecological calibration | `cd seeding && node seed-calibrate.mjs` | console report |
 
-Fixed seeds: `run.mjs` and `robustness.mjs` seed the PRNG explicitly (e.g.
-20260711, 20260712), so each table is reproducible to the digit.
+Fixed seeds: `run.mjs` and `robustness.mjs` seed the PRNG per cell from a fixed
+base (20260711 and 20260712 respectively) hashed with the cell parameters, so
+each table is reproducible to the digit regardless of worker count.
 
 ## Public release
 
