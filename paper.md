@@ -12,12 +12,12 @@ authors:
     orcid: 0000-0002-2932-7897
     corresponding: true
     affiliation: 1
-  - name: Wan-Hsiang Wang
-    orcid: 0000-0002-3011-5699
-    affiliation: "1, 2"
   - name: Yi-Jung Tsai
     orcid: 0009-0009-4124-0493
     affiliation: 1
+  - name: Wan-Hsiang Wang
+    orcid: 0000-0002-3011-5699
+    affiliation: "1, 2"
 affiliations:
   - name: Department of Education and Human Potentials Development, Hua-Shih College of Education, National Dong Hwa University, Hualien, Taiwan
     index: 1
