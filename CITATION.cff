@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use Q-SYNTH in your research, please cite it as below."
+type: software
+title: "Q-SYNTH: A recovery-simulation tool for sample-size and item-count guidance in Q methodology"
+authors:
+  - family-names: Lee
+    given-names: Ming-Shinn
+    orcid: "https://orcid.org/0000-0002-2932-7897"
+    affiliation: "Department of Education and Human Potentials Development, National Dong Hwa University, Taiwan"
+  - family-names: Tsai
+    given-names: Yi-Jung
+    orcid: "https://orcid.org/0009-0009-4124-0493"
+    affiliation: "Department of Education and Human Potentials Development, National Dong Hwa University, Taiwan"
+  - family-names: Wang
+    given-names: Wan-Hsiang
+    orcid: "https://orcid.org/0000-0002-3011-5699"
+    affiliation: "Department of Nursing, Hualien Tzu Chi Hospital, Taiwan"
+repository-code: "https://github.com/bigbrain100/q-synth"
+license: MIT
+date-released: "2026-07-17"
