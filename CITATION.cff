@@ -16,6 +16,7 @@ authors:
     orcid: "https://orcid.org/0000-0002-3011-5699"
     affiliation: "Department of Nursing, Hualien Tzu Chi Hospital, Taiwan"
 repository-code: "https://github.com/bigbrain100/q-synth"
+doi: 10.5281/zenodo.21429739
 license: MIT
 version: "1.0.0"
 date-released: "2026-07-17"

@@ -1,5 +1,7 @@
 # Q-SYNTH
 
+[![DOI](https://zenodo.org/badge/1298889650.svg)](https://doi.org/10.5281/zenodo.21429739)
+
 **A synthetic Q-sort recovery simulator, and a G\*Power-style design calculator, for evidence-based sample-size (N persons) and item-count (M statements) guidance in Q methodology.**
 
 Q-SYNTH plants known viewpoints as factor arrays, generates synthetic Q sorts under controlled communality and viewpoint distinctness, runs a standard by-person factor analysis (principal components or centroid, with varimax rotation), and measures how reliably the planted structure is recovered. It turns Q's untested rules of thumb ("40–80 statements", "4–5 defining sorts per factor") into condition-specific, confidence-interval-backed guidance, and its calculator turns that guidance into a concrete recommendation for a planned study.
@@ -77,7 +79,11 @@ The exploratory-factor-analysis sample-size literature (MacCallum et al., 1999) 
 
 ## Citation
 
-If you use Q-SYNTH, please cite the accompanying paper (see `paper.md`).
+If you use Q-SYNTH, please cite it (all-versions DOI: [10.5281/zenodo.21429739](https://doi.org/10.5281/zenodo.21429739)):
+
+> Lee, M.-S., Tsai, Y.-J., & Wang, W.-H. (2026). *Q-SYNTH: A recovery-simulation tool for sample-size and item-count guidance in Q methodology* (Version 1.0.0) [Computer software]. https://doi.org/10.5281/zenodo.21429739
+
+or use GitHub's **Cite this repository** button. A software paper is under review; see `paper.md`.
 
 ## Contributing
 

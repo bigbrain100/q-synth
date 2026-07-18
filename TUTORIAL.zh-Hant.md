@@ -84,6 +84,6 @@ Q-SYNTH 檢驗了這些口訣。它在合成資料中植入已知觀點，於控
 
 ## 引用 Q-SYNTH
 
-> Lee, M.-S., Tsai, Y.-J., & Wang, W.-H. (2026). *Q-SYNTH: A recovery-simulation tool for sample-size and item-count guidance in Q methodology* [Computer software]. https://github.com/bigbrain100/q-synth
+> Lee, M.-S., Tsai, Y.-J., & Wang, W.-H. (2026). *Q-SYNTH: A recovery-simulation tool for sample-size and item-count guidance in Q methodology* (Version 1.0.0) [Computer software]. https://doi.org/10.5281/zenodo.21429739
 
 或使用 GitHub repo 頁面右上角的 **Cite this repository** 按鈕。
