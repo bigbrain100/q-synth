@@ -78,12 +78,12 @@ Q-SYNTH 檢驗了這些口訣。它在合成資料中植入已知觀點，於控
 
 ## 寫進方法一節
 
-> 本研究之樣本數以 Q-SYNTH 還原模擬計算器事前決定（Lee, Tsai, & Wang, 2026）。設定共同性 0.6、觀點重疊 0.4、預期三個觀點、40 題陳述句，達到 .90 還原率需每因子 8 個定義排序，故招募 30 位參與者。
+> 本研究之樣本數以 Q-SYNTH 還原模擬計算器事前決定（Lee, Wang, & Tsai, 2026）。設定共同性 0.6、觀點重疊 0.4、預期三個觀點、40 題陳述句，達到 .90 還原率需每因子 8 個定義排序，故招募 30 位參與者。
 
 審查者問「你的 *N* 怎麼來的」時，這比「類似研究大約收 30 人」有力得多。
 
 ## 引用 Q-SYNTH
 
-> Lee, M.-S., Tsai, Y.-J., & Wang, W.-H. (2026). *Q-SYNTH: A recovery-simulation tool for sample-size and item-count guidance in Q methodology* (Version 1.0.0) [Computer software]. https://doi.org/10.5281/zenodo.21429739
+> Lee, M.-S., Wang, W.-H., & Tsai, Y.-J. (2026). *Q-SYNTH: A recovery-simulation tool for sample-size and item-count guidance in Q methodology* (Version 1.0.0) [Computer software]. https://doi.org/10.5281/zenodo.21429739
 
 或使用 GitHub repo 頁面右上角的 **Cite this repository** 按鈕。

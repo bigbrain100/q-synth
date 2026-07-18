@@ -76,12 +76,12 @@ The fastest way to learn the tool: press **Load example**, then **Calculate**, a
 
 ## Reporting it in your methods section
 
-> Sample size was determined a priori with the Q-SYNTH recovery-simulation calculator (Lee, Tsai, & Wang, 2026). Assuming communality 0.6, viewpoint overlap 0.4, three expected viewpoints, and 40 statements, 8 defining sorts per factor were required for a .90 recovery rate, so 30 participants were recruited.
+> Sample size was determined a priori with the Q-SYNTH recovery-simulation calculator (Lee, Wang, & Tsai, 2026). Assuming communality 0.6, viewpoint overlap 0.4, three expected viewpoints, and 40 statements, 8 defining sorts per factor were required for a .90 recovery rate, so 30 participants were recruited.
 
 When a reviewer asks where your *N* came from, this is a far stronger answer than "similar studies used about 30."
 
 ## Citing Q-SYNTH
 
-> Lee, M.-S., Tsai, Y.-J., & Wang, W.-H. (2026). *Q-SYNTH: A recovery-simulation tool for sample-size and item-count guidance in Q methodology* (Version 1.0.0) [Computer software]. https://doi.org/10.5281/zenodo.21429739
+> Lee, M.-S., Wang, W.-H., & Tsai, Y.-J. (2026). *Q-SYNTH: A recovery-simulation tool for sample-size and item-count guidance in Q methodology* (Version 1.0.0) [Computer software]. https://doi.org/10.5281/zenodo.21429739
 
 Or use GitHub's **Cite this repository** button (top right of the repo page).
