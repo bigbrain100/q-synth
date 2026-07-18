@@ -23,7 +23,7 @@ The simulation, the calculator, and the tests run with Node alone: **no dependen
 
 ### Design calculator (plan a study)
 
-**In a browser (no install):** open `calculator.html` in any web browser. It provides a G*Power-style form (expected communality, viewpoint overlap, statements, target recovery) and returns the recommended defining sorts per factor and participant count, with a recovery-rate curve. The page is self-contained (the lookup table is embedded), so it works by double-clicking the file, and it can be deployed (e.g. GitHub Pages) as a live tool.
+**In a browser (no install):** use the live tool at <https://bigbrain100.github.io/q-synth/calculator.html>, or open `calculator.html` locally in any web browser. A step-by-step tutorial written for researchers with no factor-analysis background is in [TUTORIAL.md](TUTORIAL.md) (English) and [TUTORIAL.zh-Hant.md](TUTORIAL.zh-Hant.md) (繁體中文). It provides a G*Power-style form (expected communality, viewpoint overlap, statements, target recovery) and returns the recommended defining sorts per factor and participant count, with a recovery-rate curve. The page is self-contained (the lookup table is embedded), so it works by double-clicking the file, and it can be deployed (e.g. GitHub Pages) as a live tool.
 
 **On the command line:** given the kind of viewpoints you expect, get the sample size and item count needed for the factors to be recovered:
 
@@ -68,6 +68,7 @@ The exploratory-factor-analysis sample-size literature (MacCallum et al., 1999) 
 
 ## Documentation
 
+- `TUTORIAL.md` / `TUTORIAL.zh-Hant.md` — step-by-step calculator tutorial (English / 繁體中文), no factor-analysis background assumed.
 - `DATA_GENERATION.md` — how the synthetic data are generated and how to reproduce every result.
 - `ROBUSTNESS.md` — PCA vs centroid robustness of the design standard.
 - `PRIOR_ART.md` — how Q-SYNTH relates to existing Q tools and the sample-size literature.
