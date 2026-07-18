@@ -17,4 +17,5 @@ authors:
     affiliation: "Department of Nursing, Hualien Tzu Chi Hospital, Taiwan"
 repository-code: "https://github.com/bigbrain100/q-synth"
 license: MIT
+version: "1.0.0"
 date-released: "2026-07-17"

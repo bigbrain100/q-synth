@@ -1,0 +1,31 @@
+{
+  "title": "Q-SYNTH: A recovery-simulation tool for sample-size and item-count guidance in Q methodology",
+  "description": "A synthetic Q-sort recovery simulator, and a G*Power-style design calculator, for evidence-based sample-size (N persons) and item-count (M statements) guidance in Q methodology. Plants known viewpoints as factor arrays, generates synthetic Q sorts under controlled communality and viewpoint distinctness, runs standard by-person factor analysis (PCA or centroid with varimax), and measures how reliably the planted structure is recovered.",
+  "upload_type": "software",
+  "license": "MIT",
+  "creators": [
+    {
+      "name": "Lee, Ming-Shinn",
+      "orcid": "0000-0002-2932-7897",
+      "affiliation": "Department of Education and Human Potentials Development, National Dong Hwa University, Taiwan"
+    },
+    {
+      "name": "Tsai, Yi-Jung",
+      "orcid": "0009-0009-4124-0493",
+      "affiliation": "Department of Education and Human Potentials Development, National Dong Hwa University, Taiwan"
+    },
+    {
+      "name": "Wang, Wan-Hsiang",
+      "orcid": "0000-0002-3011-5699",
+      "affiliation": "Department of Nursing, Hualien Tzu Chi Hospital, Taiwan"
+    }
+  ],
+  "keywords": [
+    "Q methodology",
+    "factor analysis",
+    "Monte Carlo simulation",
+    "sample size",
+    "research design",
+    "recovery simulation"
+  ]
+}
