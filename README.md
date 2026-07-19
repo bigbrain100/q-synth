@@ -83,7 +83,7 @@ If you use Q-SYNTH, please cite it (all-versions DOI: [10.5281/zenodo.21429739](
 
 > Lee, M.-S., Wang, W.-H., & Tsai, Y.-J. (2026). *Q-SYNTH: A recovery-simulation tool for sample-size and item-count guidance in Q methodology* (Version 1.0.0) [Computer software]. https://doi.org/10.5281/zenodo.21429739
 
-or use GitHub's **Cite this repository** button. A software paper is under review; see `paper.md`.
+or use GitHub's **Cite this repository** button. An accompanying software paper is included in the repository (`paper.md`).
 
 ## Contributing
 

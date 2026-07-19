@@ -38,6 +38,22 @@ npm test            # unit tests (node --test)
 node calculate.mjs --c 0.6 --rho 0.2 --M 40   # smoke-test the calculator
 ```
 
+## Release checklist (maintainers)
+
+1. All tests pass (`npm test`) and the calculator smoke-test runs.
+2. Bump `version` in `package.json` and `CITATION.cff` (keep `date-released` current).
+3. Create the GitHub release. Zenodo archives it automatically via the webhook.
+4. **Fix the Zenodo record by hand — every release.** Zenodo's GitHub integration
+   currently ignores `.zenodo.json` and `CITATION.cff`, so each auto-archived
+   version is created with the GitHub account name as the only author and the
+   repository slug as the title. On zenodo.org, open the new version → Edit →
+   set the title to the CITATION.cff title and the creators to the three authors
+   (Lee, Ming-Shinn; Wang, Wan-Hsiang; Tsai, Yi-Jung — with ORCIDs and
+   affiliations, in that order) → Publish. The DOI does not change.
+5. Verify with the API that the record is correct:
+   `curl -s https://zenodo.org/api/records/<new-version-id>` — check `title`
+   and `creators`. The all-versions (concept) DOI stays 10.5281/zenodo.21429739.
+
 ## Code of conduct
 
 Participation in this project is governed by the [Code of Conduct](CODE_OF_CONDUCT.md).
