@@ -2,7 +2,7 @@
 // Run with: node --test
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { correlationMatrix, pearson, pcaExtract, varimax, factorScores, generateCompositeSort } from '../engine.mjs';
+import { correlationMatrix, pearson, pcaExtract, varimax, factorScores, generateCompositeSort, jacobi, autoFlag } from '../engine.mjs';
 
 const approx = (a, b, eps = 1e-6) => Math.abs(a - b) <= eps;
 
@@ -35,6 +35,46 @@ test('pcaExtract: eigenvalues sum to N and equal column sums of squared loadings
     const ss = loadings.reduce((s, row) => s + row[j] * row[j], 0);
     assert.ok(approx(ss, eigenvalues[j], 1e-3), `col ${j} SS = eigenvalue`);
   }
+});
+
+test('jacobi: converges at large N (regression for the former 200-rotation cap)', () => {
+  // Deterministic 84x84 symmetric matrix with correlation-like structure.
+  // The pre-fix solver stopped after 200 rotations, leaving a residual
+  // off-diagonal norm of ~8.5 on matrices this size; converged Jacobi must
+  // fully diagonalize: A ~= V diag(ev) V^T to near machine precision.
+  const n = 84;
+  const A = Array.from({ length: n }, (_, i) => new Array(n));
+  for (let i = 0; i < n; i++) for (let j = 0; j < n; j++) {
+    A[i][j] = i === j ? 1 : Math.sin(i * 0.37 + 1) * Math.sin(j * 0.37 + 1) * 0.7 + Math.cos((i - j) * 0.91) * 0.15;
+  }
+  for (let i = 0; i < n; i++) for (let j = 0; j < i; j++) A[i][j] = A[j][i];
+  const { eigenvalues, eigenvectors } = jacobi(A);
+  let maxErr = 0;
+  for (let i = 0; i < n; i++) for (let j = 0; j < n; j++) {
+    let s = 0;
+    for (let k = 0; k < n; k++) s += eigenvectors[i][k] * eigenvalues[k] * eigenvectors[j][k];
+    maxErr = Math.max(maxErr, Math.abs(s - A[i][j]));
+  }
+  assert.ok(maxErr < 1e-9, `reconstruction error ${maxErr} < 1e-9`);
+  const trace = eigenvalues.reduce((a, b) => a + b, 0);
+  assert.ok(approx(trace, n, 1e-8), 'eigenvalue sum = trace');
+});
+
+test('autoFlag: significance AND majority-of-common-variance, like qmethod/KADE', () => {
+  const M = 40; // sig threshold = 1.96/sqrt(40) ~= 0.3099
+  const loadings = [
+    [0.70, 0.10, 0.05],  // flagged on f0: significant and dominant
+    [0.25, 0.05, 0.02],  // not significant anywhere -> no flag
+    [-0.60, 0.10, 0.03], // negative but significant and dominant -> flagged on f0 (sign kept)
+    [0.45, 0.44, 0.02],  // 0.45^2 > 0.44^2 + 0.02^2 -> majority on f0, flagged there only
+    [0.50, 0.50, 0.50],  // significant on all three, no factor has the majority -> no flag
+  ];
+  const fl = autoFlag(loadings, M);
+  assert.deepEqual(fl[0], [true, false, false]);
+  assert.deepEqual(fl[1], [false, false, false]);
+  assert.deepEqual(fl[2], [true, false, false]);
+  assert.deepEqual(fl[3], [true, false, false]);
+  assert.deepEqual(fl[4], [false, false, false]);
 });
 
 test('varimax: preserves per-row communalities', () => {

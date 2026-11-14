@@ -3,7 +3,7 @@
 // engine.mjs, and centroid is in centroid.mjs. Both extraction paths are validated
 // against a real KADE export (PCA bit-exact; centroid structure col-corr >=0.9995;
 // see validation/).
-import { correlationMatrix, pcaExtract, varimax } from './engine.mjs';
+import { correlationMatrix, pcaExtract, varimax, autoFlag } from './engine.mjs';
 import { factorScores, generateCompositeSort } from './engine.mjs';
 import { centroidExtract } from './centroid.mjs';
 
@@ -93,23 +93,63 @@ export function paThreshold(rng, N, M, mode, distribution, B = 60, pct = 0.95) {
 }
 export function paK(eigs, thr) { let k = 0; for (let i = 0; i < eigs.length; i++) if (eigs[i] > thr[i]) k++; return k; }
 
-// ---------- 還原(PCA + varimax + factorScores)+ 配對 ----------
-// 回傳:{ estK, phis(每個植入觀點的最佳 |φ|) }
-export function recover(sorts, idealZ, nFactors, extraction = 'pca') {
+// ---------- 配對:精確 max-min 指派 ----------
+// phi[t][f] = 植入 t 與還原 f 的 |φ|。回傳「讓最差配對 |φ| 最大」的一對一指派下,
+// 每個植入觀點分到的 |φ|(還原因子數不足時,落單的植入觀點計 0)。
+// 以「二分候選門檻 + 二部圖增廣配對」求解,是 README 所述判準
+// 「每個植入觀點都由一個*不同的*還原因子在門檻以上配對」的精確實作
+// (貪婪配對在衝突時可能漏掉存在的合法指派)。
+export function maxMinAssignment(phi) {
+  const K = phi.length, F0 = phi[0] ? phi[0].length : 0;
+  const F = F0 + K; // 末尾補 K 個 φ=0 的虛擬因子,保證完美配對存在
+  const val = (t, f) => (f < F0 ? phi[t][f] : 0);
+  const matching = thr => {
+    const matchOf = new Array(F).fill(-1);
+    const tryAug = (u, seen) => {
+      for (let v = 0; v < F; v++) {
+        if (val(u, v) >= thr && !seen[v]) {
+          seen[v] = true;
+          if (matchOf[v] === -1 || tryAug(matchOf[v], seen)) { matchOf[v] = u; return true; }
+        }
+      }
+      return false;
+    };
+    let size = 0;
+    for (let u = 0; u < K; u++) if (tryAug(u, new Array(F).fill(false))) size++;
+    return { size, matchOf };
+  };
+  const cands = [...new Set([0, ...phi.flat()])].sort((a, b) => a - b);
+  let lo = 0, hi = cands.length - 1, best = matching(0);
+  while (lo < hi) { // 最大的仍可完美配對的門檻
+    const mid = (lo + hi + 1) >> 1;
+    const m = matching(cands[mid]);
+    if (m.size === K) { lo = mid; best = m; } else hi = mid - 1;
+  }
+  const phis = new Array(K).fill(0);
+  for (let v = 0; v < F; v++) if (best.matchOf[v] >= 0) phis[best.matchOf[v]] = val(best.matchOf[v], v);
+  return phis;
+}
+
+// ---------- 還原(PCA/centroid + varimax + flag + factorScores)+ 配對 ----------
+// 因子陣列只由「自動 flag 的定義排序」計算(engine.mjs autoFlag:|l|>1.96/√M 且
+// 該因子平方負荷 > 其他因子平方負荷總和),與 qmethod/KADE 的 auto-flag 一致;
+// scoring='all' 保留舊行為(全體排序加權)供方法學比較。
+// 回傳:{ estK, phis(最適指派下每個植入觀點的 |φ|) }
+export function recover(sorts, idealZ, nFactors, extraction = 'pca', scoring = 'flag') {
   const K = idealZ.length;
   const nf = Math.max(1, Math.min(nFactors, sorts.length - 1));
   const cm = correlationMatrix(sorts);
   const { loadings } = extraction === 'centroid' ? centroidExtract(cm, nf) : pcaExtract(cm, nf);
   const rot = nf >= 2 ? varimax(loadings).loadings : loadings;
+  const M = sorts[0].length;
+  const flags = scoring === 'flag' ? autoFlag(rot, M) : null;
   const rec = [];
-  for (let f = 0; f < nf; f++) rec.push(factorScores(sorts, rot.map(r => r[f]), 0));
-  const used = new Set(), phis = [];
-  for (let t = 0; t < K; t++) {
-    let bestAbs = 0, bf = -1;
-    for (let f = 0; f < rec.length; f++) { if (used.has(f)) continue; const ph = Math.abs(tuckerPhi(idealZ[t], rec[f])); if (ph > bestAbs) { bestAbs = ph; bf = f; } }
-    if (bf >= 0) used.add(bf); phis.push(bestAbs);
+  for (let f = 0; f < nf; f++) {
+    const col = rot.map((r, p) => (flags && !flags[p][f] ? 0 : r[f])); // 未 flag → 權重 0
+    rec.push(factorScores(sorts, col, 0));
   }
-  return { estK: nf, phis };
+  const phi = idealZ.map(iz => rec.map(r => Math.abs(tuckerPhi(iz, r))));
+  return { estK: nf, phis: maxMinAssignment(phi) };
 }
 
 // ---------- Wilson 95% 信賴區間 ----------

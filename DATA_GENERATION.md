@@ -76,13 +76,23 @@ non-ipsative rendering (round and clamp) is available for contrast.
 
 **5. One raw dataset.** Steps 2 to 4 produce an N by M integer matrix (N sorts,
 M statements). This matrix is the "raw data" of one replicate; it is analysed
-exactly as a real Q study would be (correlation, extraction, rotation, factor
-arrays).
+exactly as a real Q study would be: by-person correlation, extraction (PCA via a
+converged cyclic Jacobi eigensolver, or centroid), varimax rotation, **automatic
+flagging of defining sorts** (|loading| > 1.96/√M and a majority of the sort's
+common variance on that factor — the auto-flag rule of `qmethod`'s `qflag()` and
+of KADE, verified against their source code), and Brown-weighted factor arrays
+computed **from the flagged sorts only**, as mainstream Q software computes them.
+A factor on which no sort is flagged yields an empty (zero) array and therefore
+cannot count as recovered, mirroring practice: a factor without defining sorts is
+not interpretable.
 
 **6. Monte Carlo.** Steps 2 to 5 are repeated R times (R = 1000 in the submission
 sweep) for each design cell, the RNG advancing each time, and the recovery rate
 is the fraction of replicates in which every planted viewpoint is matched by a
-distinct recovered factor at Tucker congruence at or above the threshold.
+distinct recovered factor at Tucker congruence at or above the threshold. The
+planted-to-recovered pairing is an **optimal one-to-one assignment** (the
+assignment maximizing the worst congruence, found exactly by threshold search
+over bipartite matchings), so a recovery is never missed through greedy pairing.
 
 ## Where the "raw data" lives
 

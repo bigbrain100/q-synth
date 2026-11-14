@@ -2,7 +2,7 @@
 // Run with: node --test
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { makeRng, buildDistribution, makeIdeals, makeParticipants, recover, wilson, tuckerPhi, zscore } from '../qsynth.mjs';
+import { makeRng, buildDistribution, makeIdeals, makeParticipants, recover, wilson, tuckerPhi, zscore, maxMinAssignment } from '../qsynth.mjs';
 import { centroidExtract } from '../centroid.mjs';
 import { correlationMatrix } from '../engine.mjs';
 
@@ -84,6 +84,26 @@ test('recover: strong distinct viewpoints are recovered well', () => {
   const { sorts } = makeParticipants(rng, idealZ, 8, 0.8, 'forced', dist, 0);
   const { phis } = recover(sorts, idealZ, K, 'pca');
   assert.ok(Math.min(...phis) > 0.9, 'high communality + distinct -> recovered');
+});
+
+test('maxMinAssignment: finds the assignment a greedy matcher misses', () => {
+  // planted 0 matches both recovered factors, planted 1 only recovered 0.
+  // Greedy (planted 0 first) grabs recovered 0 (.93) and leaves planted 1 with 0;
+  // the optimal assignment is planted0->rec1 (.92), planted1->rec0 (.91).
+  const phis = maxMinAssignment([
+    [0.93, 0.92],
+    [0.91, 0.00],
+  ]);
+  assert.deepEqual(phis.map(p => Math.round(p * 100)), [92, 91]);
+});
+
+test('maxMinAssignment: fewer recovered factors than planted -> unmatched planted scores 0', () => {
+  const phis = maxMinAssignment([
+    [0.95],
+    [0.90],
+  ]);
+  assert.equal(Math.min(...phis), 0, 'one planted factor must go unmatched');
+  assert.ok(Math.max(...phis) >= 0.90, 'the matched planted factor keeps a real partner');
 });
 
 test('tuckerPhi and zscore basics', () => {

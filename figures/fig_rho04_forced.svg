@@ -14,22 +14,22 @@
 <text x="390" y="350" text-anchor="middle" fill="#555">12</text>
 <text x="225" y="372" text-anchor="middle" fill="#333">每因素人數(persons/factor)</text>
 <text x="16" y="187" text-anchor="middle" transform="rotate(-90 16 187)" fill="#333">還原率 @|φ|≥0.90</text>
-<polyline points="60,330 170,327.998 280,288.53 390,129.8" fill="none" stroke="#1b7" stroke-width="2.5"/>
+<polyline points="60,330 170,329.142 280,299.11199999999997 390,146.67399999999998" fill="none" stroke="#1b7" stroke-width="2.5"/>
 <circle cx="60" cy="330" r="3.5" fill="#1b7"/>
-<circle cx="170" cy="327.998" r="3.5" fill="#1b7"/>
-<circle cx="280" cy="288.53" r="3.5" fill="#1b7"/>
-<circle cx="390" cy="129.8" r="3.5" fill="#1b7"/>
+<circle cx="170" cy="329.142" r="3.5" fill="#1b7"/>
+<circle cx="280" cy="299.11199999999997" r="3.5" fill="#1b7"/>
+<circle cx="390" cy="146.67399999999998" r="3.5" fill="#1b7"/>
 <line x1="404" y1="50" x2="424" y2="50" stroke="#1b7" stroke-width="2.5"/><text x="428" y="54" fill="#333">c=0.4</text>
-<polyline points="60,260.788 170,138.38 280,84.612 390,57.15600000000001" fill="none" stroke="#28c" stroke-width="2.5"/>
-<circle cx="60" cy="260.788" r="3.5" fill="#28c"/>
-<circle cx="170" cy="138.38" r="3.5" fill="#28c"/>
-<circle cx="280" cy="84.612" r="3.5" fill="#28c"/>
-<circle cx="390" cy="57.15600000000001" r="3.5" fill="#28c"/>
+<polyline points="60,272.228 170,140.668 280,84.898 390,58.01400000000001" fill="none" stroke="#28c" stroke-width="2.5"/>
+<circle cx="60" cy="272.228" r="3.5" fill="#28c"/>
+<circle cx="170" cy="140.668" r="3.5" fill="#28c"/>
+<circle cx="280" cy="84.898" r="3.5" fill="#28c"/>
+<circle cx="390" cy="58.01400000000001" r="3.5" fill="#28c"/>
 <line x1="404" y1="70" x2="424" y2="70" stroke="#28c" stroke-width="2.5"/><text x="428" y="74" fill="#333">c=0.6</text>
-<polyline points="60,134.08999999999997 170,79.178 280,58.872000000000014 390,45.144" fill="none" stroke="#e63" stroke-width="2.5"/>
+<polyline points="60,134.08999999999997 170,79.178 280,59.73000000000002 390,45.43" fill="none" stroke="#e63" stroke-width="2.5"/>
 <circle cx="60" cy="134.08999999999997" r="3.5" fill="#e63"/>
 <circle cx="170" cy="79.178" r="3.5" fill="#e63"/>
-<circle cx="280" cy="58.872000000000014" r="3.5" fill="#e63"/>
-<circle cx="390" cy="45.144" r="3.5" fill="#e63"/>
+<circle cx="280" cy="59.73000000000002" r="3.5" fill="#e63"/>
+<circle cx="390" cy="45.43" r="3.5" fill="#e63"/>
 <line x1="404" y1="90" x2="424" y2="90" stroke="#e63" stroke-width="2.5"/><text x="428" y="94" fill="#333">c=0.8</text>
 </svg>

@@ -14,16 +14,16 @@
 <text x="390" y="350" text-anchor="middle" fill="#555">12</text>
 <text x="225" y="372" text-anchor="middle" fill="#333">每因素人數(persons/factor)</text>
 <text x="16" y="187" text-anchor="middle" transform="rotate(-90 16 187)" fill="#333">還原率 @|φ|≥0.90</text>
-<polyline points="60,330 170,328.856 280,287.1 390,92.334" fill="none" stroke="#1b7" stroke-width="2.5"/>
+<polyline points="60,330 170,329.142 280,270.798 390,92.334" fill="none" stroke="#1b7" stroke-width="2.5"/>
 <circle cx="60" cy="330" r="3.5" fill="#1b7"/>
-<circle cx="170" cy="328.856" r="3.5" fill="#1b7"/>
-<circle cx="280" cy="287.1" r="3.5" fill="#1b7"/>
+<circle cx="170" cy="329.142" r="3.5" fill="#1b7"/>
+<circle cx="280" cy="270.798" r="3.5" fill="#1b7"/>
 <circle cx="390" cy="92.334" r="3.5" fill="#1b7"/>
 <line x1="404" y1="50" x2="424" y2="50" stroke="#1b7" stroke-width="2.5"/><text x="428" y="54" fill="#333">c=0.4</text>
-<polyline points="60,208.16400000000002 170,56.58400000000001 280,45.144 390,44" fill="none" stroke="#28c" stroke-width="2.5"/>
-<circle cx="60" cy="208.16400000000002" r="3.5" fill="#28c"/>
-<circle cx="170" cy="56.58400000000001" r="3.5" fill="#28c"/>
-<circle cx="280" cy="45.144" r="3.5" fill="#28c"/>
+<polyline points="60,202.158 170,52.86600000000001 280,44.858000000000004 390,44" fill="none" stroke="#28c" stroke-width="2.5"/>
+<circle cx="60" cy="202.158" r="3.5" fill="#28c"/>
+<circle cx="170" cy="52.86600000000001" r="3.5" fill="#28c"/>
+<circle cx="280" cy="44.858000000000004" r="3.5" fill="#28c"/>
 <circle cx="390" cy="44" r="3.5" fill="#28c"/>
 <line x1="404" y1="70" x2="424" y2="70" stroke="#28c" stroke-width="2.5"/><text x="428" y="74" fill="#333">c=0.6</text>
 <polyline points="60,47.432 170,44.572 280,44 390,44" fill="none" stroke="#e63" stroke-width="2.5"/>

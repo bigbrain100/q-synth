@@ -2,6 +2,10 @@ node_modules/
 # Human-subjects Q data — never commit
 KADE_*.xlsx
 *.xlsx
+# Author-internal promo material — keep out of the public repo
+社群推廣/
+# Author-internal session handoff notes — keep out of the public repo
+SESSION_HANDOFF.md
 # OS / logs
 .DS_Store
 npm-debug.log*

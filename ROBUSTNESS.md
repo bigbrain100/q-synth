@@ -21,18 +21,19 @@ Recovery @ |φ| ≥ 0.90, shown **PCA% / centroid%** (M = 40, forced, oracle):
 | c \ persons-per-factor | 4 | 6 | 8 | 12 |
 |---|---|---|---|---|
 | **ρ = 0.0** |||||
-| 0.4 | 0 / 0 | 2 / 1 | 21 / 19 | 90 / 89 |
-| 0.6 | 52 / 34 | 98 / 90 | 100 / 97 | 100 / 99 |
+| 0.4 | 0 / 0 | 3 / 2 | 26 / 22 | 93 / 92 |
+| 0.6 | 51 / 36 | 98 / 91 | 100 / 97 | 100 / 99 |
 | 0.8 | 100 / 81 | 100 / 92 | 100 / 96 | 100 / 100 |
 | **ρ = 0.4** |||||
-| 0.4 | 0 / 0 | 2 / 1 | 22 / 20 | 88 / 84 |
-| 0.6 | 53 / 36 | 98 / 87 | 100 / 95 | 100 / 98 |
+| 0.4 | 0 / 0 | 1 / 0 | 16 / 14 | 81 / 79 |
+| 0.6 | 40 / 28 | 95 / 84 | 100 / 95 | 100 / 98 |
 | 0.8 | 100 / 76 | 100 / 87 | 100 / 94 | 100 / 97 |
 
 (ρ = 0.2 and M = 20 also in `robustness.csv`; same qualitative pattern.)
 
 1. **Qualitative thresholds are method-invariant.** Under both PCA and centroid:
-   c = 0.4 fails regardless of N; c ≥ 0.6 is required; recovery saturates by
+   c = 0.4 fails at any practical N (only 12/factor begins to recover, and only
+   at low overlap); c ≥ 0.6 is required; recovery saturates by
    ~8 persons/factor once c ≥ 0.6. The design conclusions do not change with the
    extraction method.
 2. **Centroid needs slightly more people at the margin** — at most ~1–2 extra

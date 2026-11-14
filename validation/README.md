@@ -63,6 +63,19 @@ recovery**: which sorts define which factor depends on the loading pattern, whic
 matches KADE at ≥0.9995 — so centroid recovery in the sweep is equivalent to
 KADE's.
 
+## 2026-11 engine update note
+
+The Jacobi eigensolver was changed from a capped rotation count to converged
+cyclic sweeps (see `engine.mjs`). At the sizes validated here (7×7 and 24×24
+correlation matrices) the old cap had already reached full convergence, so the
+cross-check results above are unaffected by the change; the fix matters for the
+larger simulated designs (N up to 105), where the cap had silently truncated
+convergence. The cross-check was re-run against a real KADE export (N = 24,
+M = 40, centroid/PAF) after the fix: correlation matrix exact, per-factor
+centroid structure correlations ≥ 0.9995 — identical agreement. An additional
+large-N export (N ≥ 60), when available, would exercise the fixed regime
+directly.
+
 ## Status / next
 
 - **Both extraction paths are validated against real KADE output.** PCA (the path

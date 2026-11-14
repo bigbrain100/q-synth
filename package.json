@@ -1,6 +1,6 @@
 {
   "name": "q-synth",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A synthetic Q-sort recovery simulator for evidence-based sample-size (N persons) and item-count (M statements) guidance in Q methodology.",
   "type": "module",
   "main": "qsynth.mjs",

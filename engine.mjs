@@ -57,45 +57,54 @@ export function matIdentity(n) {
   return I;
 }
 
-// Classic cyclic Jacobi eigensolver for a real symmetric matrix. Returns
-// eigenvalues and eigenvectors sorted by descending eigenvalue. eigenvectors[i][j]
-// is the i-th component of the j-th eigenvector (columns are eigenvectors).
-export function jacobi(A, maxIter = 200, tol = 1e-12) {
+// Cyclic Jacobi eigensolver for a real symmetric matrix: sweeps every (p,q)
+// plane in order and repeats sweeps until the largest off-diagonal element
+// falls below tol, so the decomposition is converged at any matrix size (the
+// earlier revision capped the total rotation count, which silently truncated
+// convergence for large N; see tests/engine.test.mjs for the regression test).
+// Returns eigenvalues and eigenvectors sorted by descending eigenvalue.
+// eigenvectors[i][j] is the i-th component of the j-th eigenvector (columns are
+// eigenvectors).
+export function jacobi(A, maxSweeps = 100, tol = 1e-12) {
   const n = A.length;
   const S = new Float64Array(n * n);
   for (let i = 0; i < n; i++) for (let j = 0; j < n; j++) S[i * n + j] = A[i][j];
   const V = new Float64Array(n * n);
   for (let i = 0; i < n; i++) V[i * n + i] = 1;
 
-  for (let iter = 0; iter < maxIter; iter++) {
-    let maxOff = 0, p = 0, q = 1;
+  for (let sweep = 0; sweep < maxSweeps; sweep++) {
+    let maxOff = 0;
     for (let i = 0; i < n; i++) for (let j = i + 1; j < n; j++) {
       const a = Math.abs(S[i * n + j]);
-      if (a > maxOff) { maxOff = a; p = i; q = j; }
+      if (a > maxOff) maxOff = a;
     }
     if (maxOff < tol) break;
-    const app = S[p * n + p], aqq = S[q * n + q], apq = S[p * n + q];
-    let cos, sin;
-    if (Math.abs(app - aqq) < tol * 1e-3) {
-      const a = Math.PI / 4; cos = Math.cos(a); sin = Math.sin(a);
-    } else {
-      const tau = (aqq - app) / (2 * apq);
-      const t = Math.sign(tau) / (Math.abs(tau) + Math.sqrt(1 + tau * tau));
-      cos = 1 / Math.sqrt(1 + t * t); sin = t * cos;
-    }
-    for (let i = 0; i < n; i++) {
-      if (i === p || i === q) continue;
-      const sip = S[i * n + p], siq = S[i * n + q];
-      S[i * n + p] = cos * sip - sin * siq; S[p * n + i] = S[i * n + p];
-      S[i * n + q] = sin * sip + cos * siq; S[q * n + i] = S[i * n + q];
-    }
-    S[p * n + p] = cos * cos * app - 2 * sin * cos * apq + sin * sin * aqq;
-    S[q * n + q] = sin * sin * app + 2 * sin * cos * apq + cos * cos * aqq;
-    S[p * n + q] = 0; S[q * n + p] = 0;
-    for (let i = 0; i < n; i++) {
-      const vip = V[i * n + p], viq = V[i * n + q];
-      V[i * n + p] = cos * vip - sin * viq;
-      V[i * n + q] = sin * vip + cos * viq;
+    for (let p = 0; p < n - 1; p++) for (let q = p + 1; q < n; q++) {
+      const apq = S[p * n + q];
+      if (Math.abs(apq) < 1e-30) continue;
+      const app = S[p * n + p], aqq = S[q * n + q];
+      let cos, sin;
+      if (Math.abs(app - aqq) < tol * 1e-3) {
+        const a = Math.PI / 4; cos = Math.cos(a); sin = Math.sin(a);
+      } else {
+        const tau = (aqq - app) / (2 * apq);
+        const t = Math.sign(tau) / (Math.abs(tau) + Math.sqrt(1 + tau * tau));
+        cos = 1 / Math.sqrt(1 + t * t); sin = t * cos;
+      }
+      for (let i = 0; i < n; i++) {
+        if (i === p || i === q) continue;
+        const sip = S[i * n + p], siq = S[i * n + q];
+        S[i * n + p] = cos * sip - sin * siq; S[p * n + i] = S[i * n + p];
+        S[i * n + q] = sin * sip + cos * siq; S[q * n + i] = S[i * n + q];
+      }
+      S[p * n + p] = cos * cos * app - 2 * sin * cos * apq + sin * sin * aqq;
+      S[q * n + q] = sin * sin * app + 2 * sin * cos * apq + cos * cos * aqq;
+      S[p * n + q] = 0; S[q * n + p] = 0;
+      for (let i = 0; i < n; i++) {
+        const vip = V[i * n + p], viq = V[i * n + q];
+        V[i * n + p] = cos * vip - sin * viq;
+        V[i * n + q] = sin * vip + cos * viq;
+      }
     }
   }
   const ev = new Array(n);
@@ -171,6 +180,24 @@ export function varimax(loadings, maxIter = 100, tol = 1e-6) {
   }
   const rotated = Array.from({ length: n }, (_, i) => B[i].map(v => v * comm[i]));
   return { loadings: rotated, communalities: Array.from(comm).map(h => h * h) };
+}
+
+// Automatic flagging of defining sorts, mirroring the auto-flag rule of
+// mainstream Q software. A sort is flagged on a factor iff BOTH
+//   (1) its loading is significant at p < .05: |loading| > 1.96 / sqrt(M), and
+//   (2) its squared loading on that factor exceeds the sum of its squared
+//       loadings on all other factors (the "majority of common variance" rule).
+// This is exactly qmethod's qflag() (thold.05 = 1.96/sqrt(nstat);
+// loa_sq[n,f] > rowSums(loa_sq)-loa_sq[n,f]) and KADE's auto-flag with its
+// default 0.05 level (sig = level * 1/sqrt(totalStatements)) plus the majority-
+// of-common-variance option; both verified against their source code. Returns
+// flags[sort][factor] booleans.
+export function autoFlag(loadings, M) {
+  const sig = 1.96 / Math.sqrt(M);
+  return loadings.map(row => {
+    const h2 = row.reduce((s, v) => s + v * v, 0);
+    return row.map(l => Math.abs(l) > sig && l * l > h2 - l * l);
+  });
 }
 
 // Brown-weighted, z-scored factor scores (the factor array) from one loading

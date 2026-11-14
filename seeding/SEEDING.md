@@ -1,7 +1,7 @@
 # Ecological calibration — do the swept c/ρ ranges match real Q data?
 
 The sweep varies shared variance **c** ∈ {0.4, 0.6, 0.8} and factor distinctness
-**ρ** ∈ {0.0, 0.4}. Are these realistic, or arbitrary? We calibrate against a
+**ρ** ∈ {0.0, 0.2, 0.4}. Are these realistic, or arbitrary? We calibrate against a
 **published** Q dataset (firewall: published factor arrays only).
 
 ## Anchor: the Lipset dataset
@@ -30,7 +30,7 @@ Reproduce: `node seed-calibrate.mjs`.
 |---|---|---|---|
 | c = mean defining loading² | **0.624** (0.44–0.78) | 0.572 (0.35–1.02*) | 0.4 / **0.6** / 0.8 |
 | mean communality (K=3) | 0.638 | 0.513 | — |
-| ρ = mean \|φ\| between arrays | **0.185** (pairs 0.03–0.33) | 0.091 (0.07–0.12) | 0.0 / 0.4 |
+| ρ = mean \|φ\| between arrays | **0.185** (pairs 0.03–0.33) | 0.091 (0.07–0.12) | 0.0 / 0.2 / 0.4 |
 | defining sorts / factor | 3, 3, 2 | 2, 3, 2 | — |
 
 \* the 1.02 is a mild Heywood case on this very small N = 9 study; PCA gives a
@@ -40,10 +40,12 @@ clean 0.44–0.78 spread. Reported for transparency.
 
 1. **c ≈ 0.6 is the realistic centre.** Real defining sorts share ~60% of their
    variance with their factor — exactly the sweep's middle level. So the headline
-   result (at c = 0.6, Brown's 4–5/factor recovers only ~49–63%; ~8/factor is
-   needed) speaks to **real** Q studies, not an artificial regime.
-2. **ρ ≈ 0.1–0.3 sits between the swept ρ = 0 and ρ = 0.4.** Real viewpoints are
-   fairly distinct but not perfectly orthogonal; the sweep brackets this.
+   result (at c = 0.6 with M = 40, Brown's 4–5/factor recovers all viewpoints in
+   only ~20–51% of runs depending on overlap; 6/factor is needed at ρ ≤ 0.2 and
+   12/factor at ρ = 0.4) speaks to **real** Q studies, not an artificial regime.
+2. **ρ ≈ 0.1–0.3 sits between the swept ρ = 0 and ρ = 0.4, around the middle
+   level ρ = 0.2.** Real viewpoints are fairly distinct but not perfectly
+   orthogonal; the sweep brackets this.
 3. The sweep's grid is therefore **ecologically anchored**, not arbitrary — a
    point to state explicitly in Paper B when defending the parameter choices.
 
